@@ -3,31 +3,340 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Skanda Ramanan | Portfolio</title>
+    <style>
+        :root {
+            --dark-green: #1a3a2a;
+            --light-green: #2e5a3a;
+            --accent-green: #4ecca3;
+            --dark: #121212;
+            --light: #f0f0f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--dark-green), var(--dark));
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-bar {
+            display: flex;
+            justify-content: flex-start;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-bar li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-bar li a:hover {
+            background-color: var(--accent-green);
+            color: var(--dark);
+        }
+        
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark-green) 0%, var(--dark) 100%);
+            padding: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--light), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(to right, var(--light-green), var(--accent-green));
+            color: var(--dark);
+            padding: 0.8rem 2rem;
+            margin: 0.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .about-me {
+            background-color: var(--dark);
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--accent-green);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .bullet-points {
+            margin: 2rem 0;
+        }
+        
+        .bullet-points li {
+            margin-bottom: 1rem;
+            list-style: none;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .bullet-points li:before {
+            content: "•";
+            color: var(--accent-green);
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -0.2rem;
+        }
+        
+        .interests {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-green) 100%);
+            padding: 4rem 0;
+        }
+        
+        .interest-cards {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background: linear-gradient(to bottom, var(--dark-green), rgba(26, 58, 42, 0.8));
+            border-radius: 10px;
+            padding: 2rem;
+            width: 300px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-green);
+        }
+        
+        .projects {
+            text-align: center;
+            padding: 4rem 0;
+            background-color: var(--dark);
+        }
+        
+        .project-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .project-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 250px;
+            padding: 2rem;
+            background: linear-gradient(to bottom, var(--dark-green), rgba(26, 58, 42, 0.9));
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .project-btn h3 {
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+        }
+        
+        .project-btn p {
+            color: var(--light);
+            font-size: 0.9rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background: linear-gradient(to right, var(--dark-green), var(--dark));
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-bar {
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav>
-            <ul class="nav-bar">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="muso.html">Muso</a></li>
-                <li><a href="https://github.com/yourusername/sports-prediction" target="_blank">ML Sports</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <nav>
+                <ul class="nav-bar">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="muso.html">Muso</a></li>
+                    <li><a href="https://github.com/skandaramanan/ML-SPORTS" target="_blank">ML Sports</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     
     <main>
         <section class="hero">
-            <h1>Welcome to My Portfolio</h1>
-            <p>Discover my work in AI, machine learning, and software development.</p>
-            <a href="muso.html" class="btn">Explore Muso</a>
-            <a href="https://github.com/skandaramanan/ML-SPORTS" target="_blank" class="btn">See ML Sports</a>
+            <h1>Hi, I'm Skanda Ramanan</h1>
+            <p>Software engineer and tech enthusiast exploring AI, machine learning, and creative problem-solving.</p>
+            <div>
+                <a href="muso.html" class="btn">Explore Muso</a>
+                <a href="https://github.com/skandaramanan/ML-SPORTS" target="_blank" class="btn">See ML Sports</a>
+            </div>
+        </section>
+        
+        <section class="about-me">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>I'm currently studying Computing and Software Systems at the University of Melbourne while working on exciting projects and gaining hands-on experience in the tech world.</p>
+                        <ul class="bullet-points">
+                            <li>Building full-stack applications using Node.js at CISSA</li>
+                            <li>Leading technology initiatives at BusinessOne Consulting</li>
+                            <li>Training and validating AI models using RLHF techniques</li>
+                            <li>Creating cross-platform apps with Flutter and Firebase</li>
+                            <li>Developing predictive analytics for sports using machine learning</li>
+                        </ul>
+                        <p>When I'm not coding, you'll find me exploring new technologies, playing basketball, or enjoying a good coffee in Melbourne.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="interests">
+            <div class="container">
+                <h2 class="section-title">What I'm Into</h2>
+                <div class="interest-cards">
+                    <div class="card">
+                        <h3>AI & Machine Learning</h3>
+                        <p>Fascinated by building predictive models and working with LLMs through Reinforcement Learning from Human Feedback.</p>
+                    </div>
+                    <div class="card">
+                        <h3>App Development</h3>
+                        <p>Love creating cross-platform mobile experiences with Flutter and handling real-time data with Firebase.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Sports Analytics</h3>
+                        <p>Combining my passion for sports and data to build predictive models for basketball and other sports.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="projects">
+            <div class="container">
+                <h2 class="section-title">My Projects</h2>
+                <p>Check out what I've been working on lately</p>
+                <div class="project-buttons">
+                    <a href="muso.html" class="project-btn">
+                        <h3>Muso</h3>
+                        <p>A cross-platform app connecting musicians and venues using Flutter and Firebase</p>
+                    </a>
+                    <a href="https://github.com/skandaramanan/ML-SPORTS" target="_blank" class="project-btn">
+                        <h3>ML Sports</h3>
+                        <p>Predictive analytics for basketball using machine learning and real-time data</p>
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Skanda Ramanan. Designed with HTML, CSS, and ♥ for showcasing my projects.</p>
+        <div class="container">
+            <p>&copy; 2025 Skanda Ramanan. Built with code and love.</p>
+        </div>
     </footer>
 </body>
 </html>
